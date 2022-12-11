@@ -62,6 +62,10 @@ const MainHeader = styled.div`
   @media ${QUERIES.tabletAndBelow} {
     border-top: 4px solid ${COLORS.gray[900]};
   }
+  @media ${QUERIES.phoneAndBelow} {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -79,12 +83,13 @@ const MobileNav = styled.nav`
   @media ${QUERIES.tabletAndBelow} {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     flex: 1;
-    gap: 34px;
+    gap: 32px;
   }
 
   @media ${QUERIES.phoneAndBelow} {
-    gap: 17px;
+    gap: 16px;
   }
 `
 
