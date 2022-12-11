@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { WEIGHTS } from '../../constants';
+import { WEIGHTS, QUERIES } from '../../constants';
 
 import Breadcrumbs from '../Breadcrumbs';
 import Select from '../Select';
@@ -14,7 +14,13 @@ const ShoeIndex = ({ sortId, setSortId }) => {
     <Wrapper>
       <MainColumn>
         <Header>
-          <Title>Running</Title>
+          <MobileBreadcrumb>
+            <ShoeBreadcrumb />
+            <Title>Running</Title>
+          </MobileBreadcrumb>
+          <DesktopTitle>
+            <Title>Running</Title>
+          </DesktopTitle>
           <Select
             label="Sort"
             value={sortId}
@@ -28,19 +34,25 @@ const ShoeIndex = ({ sortId, setSortId }) => {
         <ShoeGrid />
       </MainColumn>
       <LeftColumn>
-        <Breadcrumbs>
-          <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale/shoes">
-            Shoes
-          </Breadcrumbs.Crumb>
-        </Breadcrumbs>
+        <ShoeBreadcrumb />
         <Spacer size={42} />
         <ShoeSidebar />
       </LeftColumn>
     </Wrapper>
   );
 };
+
+const ShoeBreadcrumb = () => {
+  return (
+    <Breadcrumbs>
+      <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+      <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+      <Breadcrumbs.Crumb href="/sale/shoes">
+        Shoes
+      </Breadcrumbs.Crumb>
+    </Breadcrumbs>
+  )
+}
 
 const Wrapper = styled.div`
   display: flex;
@@ -51,6 +63,9 @@ const Wrapper = styled.div`
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+  @media ${QUERIES.tabletAndBelow} {
+    display: none;
+  }
 `;
 
 const MainColumn = styled.div`
@@ -61,11 +76,27 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  @media ${QUERIES.tabletAndBelow} {
+    align-items: center;
+  }
 `;
+
+const MobileBreadcrumb = styled.div`
+  display: none;
+  @media ${QUERIES.tabletAndBelow} {
+    display: block;
+  }
+`
 
 const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${WEIGHTS.medium};
 `;
+
+const DesktopTitle = styled.div`
+  @media ${QUERIES.tabletAndBelow} {
+    display: none;
+  }
+`
 
 export default ShoeIndex;
