@@ -70,8 +70,15 @@ const MainHeader = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(
+    1rem,
+    8vw - 3.75rem,
+    4rem
+  
+  );
+  /* gap: 48px; */
   margin: 0px 48px;
+  overflow: auto;
   @media ${QUERIES.tabletAndBelow} {
     display: none;
   }
