@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS, QUERIES } from '../../constants';
+import { COLORS, WEIGHTS } from '../../constants';
 
 import Icon from '../Icon';
 
@@ -36,9 +36,6 @@ const Select = ({ label, value, children, ...delegated }) => {
 const Wrapper = styled.label`
   display: flex;
   align-items: baseline;
-  @media ${QUERIES.phoneAndBelow} {
-    display: none;
-  }
 `;
 
 const VisibleLabel = styled.span`

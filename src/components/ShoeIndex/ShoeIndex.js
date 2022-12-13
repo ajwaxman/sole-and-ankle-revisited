@@ -21,14 +21,16 @@ const ShoeIndex = ({ sortId, setSortId }) => {
           <DesktopTitle>
             <Title>Running</Title>
           </DesktopTitle>
-          <Select
-            label="Sort"
-            value={sortId}
-            onChange={(ev) => setSortId(ev.target.value)}
-          >
-            <option value="newest">Newest Releases</option>
-            <option value="price">Price</option>
-          </Select>
+          <SortFilterWrapper>
+            <Select
+              label="Sort"
+              value={sortId}
+              onChange={(ev) => setSortId(ev.target.value)}
+            >
+              <option value="newest">Newest Releases</option>
+              <option value="price">Price</option>
+            </Select>
+          </SortFilterWrapper>
         </Header>
         <Spacer size={32} />
         <ShoeGrid />
@@ -77,7 +79,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: baseline;
   @media ${QUERIES.tabletAndBelow} {
-    align-items: center;
+    align-items: flex-end;
   }
 `;
 
@@ -95,6 +97,12 @@ const Title = styled.h2`
 
 const DesktopTitle = styled.div`
   @media ${QUERIES.tabletAndBelow} {
+    display: none;
+  }
+`
+
+const SortFilterWrapper = styled.div`
+  @media ${QUERIES.phoneAndBelow} {
     display: none;
   }
 `

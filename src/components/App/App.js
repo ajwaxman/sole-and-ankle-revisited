@@ -20,8 +20,11 @@ const App = () => {
 
 const Main = styled.main`
   padding: 64px 32px;
+  @media ${QUERIES.tabletAndBelow} {
+    padding: 48px 32px;
+  }
   @media ${QUERIES.phoneAndBelow} {
-    padding: 32px 16px;
+    padding: 48px 16px;
   }
 `;
 
