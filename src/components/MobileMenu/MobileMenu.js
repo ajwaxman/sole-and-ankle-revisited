@@ -78,13 +78,13 @@ const MenuNav = styled.nav`
   a {
     text-decoration: none;
     text-transform: uppercase;
-    color: ${COLORS.gray[900]};
+    color: var(--gray-900);
     font-weight: ${WEIGHTS.medium};
     font-size: 18px;
     line-height: 21px;
 
     &:first-of-type {
-      color: ${COLORS.secondary}
+      color: var(--secondary);
     }
   }
 `
@@ -98,7 +98,7 @@ const MenuFooter = styled.footer`
 
   a {
     text-decoration: none;
-    color: ${COLORS.gray[700]};
+    color: var(--gray-700);
     font-size: 500;
     line-height: 16.44px;
   }
