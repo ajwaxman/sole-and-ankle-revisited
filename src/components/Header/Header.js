@@ -24,13 +24,30 @@ const Header = () => {
           <Logo />
         </Side>
         <Nav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <div>Sale</div>
+            <div>Sale</div>
+          </NavLink>
+          <NavLink href="/new">
+            <div>New&nbsp;Releases</div>
+            <div>New&nbsp;Releases</div>
+          </NavLink>
+          <NavLink href="/men">
+            <div>Men</div>
+            <div>Men</div>
+          </NavLink>
+          <NavLink href="/women">
+            <div>Women</div>
+            <div>Women</div>
+          </NavLink>
+          <NavLink href="/kids">
+            <div>Kids</div>
+            <div>Kids</div>
+          </NavLink>
+          <NavLink href="/collections">
+            <div>Collections</div>
+            <div>Collections</div>
+          </NavLink>
         </Nav>
         <MobileNav>
           <UnstyledButton>
@@ -112,6 +129,22 @@ const NavLink = styled.a`
   text-decoration: none;
   color: var(--gray-900);
   font-weight: ${WEIGHTS.medium};
+  height: 27px;
+  overflow: hidden;
+
+  div {
+    transition: transform 250ms;
+    transform: translateY(0px);
+
+    &:last-of-type {
+      font-weight: ${WEIGHTS.bold};
+    }
+  }
+
+  &:hover div {
+    transform: translateY(-27px);
+    transition: transform 250ms;
+  }
 
   &:first-of-type {
     color: var(--secondary);
