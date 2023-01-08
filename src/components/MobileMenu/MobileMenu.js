@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
 import { QUERIES, COLORS, WEIGHTS } from '../../constants';
@@ -15,7 +15,8 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    <Overlay isOpen={isOpen}>
+    <Wrapper isOpen={isOpen}>
+      <Backdrop />
       <Content aria-label="Mobile Menu">
         <MenuButton onClick={onDismiss}>
           <Icon id="close"/>
@@ -36,17 +37,45 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
           <a href="/contact">Contact Us</a>
         </MenuFooter>
       </Content>
-    </Overlay>
+    </Wrapper>
   );
 };
 
-const Overlay = styled(DialogOverlay)`
+const fadeIn = keyframes`
+  from  {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+
+const slideIn = keyframes`
+  from {
+    transform: translateX(100%);
+  } 
+  to {
+    transform: translateX(0%);
+  }
+`
+
+const Wrapper = styled(DialogOverlay)`
   position: fixed;
-  background: rgba(96, 100, 108, 0.8);
+  background: transparent;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+`
+
+const Backdrop = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(96, 100, 108, 0.8);
+  animation: ${fadeIn} 400ms;
 `
 
 const Content = styled(DialogContent)`
@@ -60,6 +89,8 @@ const Content = styled(DialogContent)`
   width: 80%;
   max-width: 375px;
   padding: 32px;
+  animation: ${slideIn} 400ms both ease-out;
+  animation-delay: 200ms;
 `
 
 const MenuButton = styled(UnstyledButton)`
@@ -74,6 +105,8 @@ const MenuNav = styled.nav`
   flex-direction: column;
   justify-content: center;
   gap: 22px;
+  animation: ${fadeIn} 600ms both;
+  animation-delay: 400ms;
 
   a {
     text-decoration: none;
